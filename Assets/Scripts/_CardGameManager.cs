@@ -237,7 +237,7 @@ public class _CardGameManager : MonoBehaviour
             if (spriteSelected == spriteId)
             {
                 //correctly matched
-                //AudioPlayer.Instance.PlayAudio(1);
+                AudioPlayer.Instance.PlayAudio(2);
                 score++;
                 scoreText.text = score.ToString();
                 cards[cardSelected].Inactive();
@@ -261,12 +261,14 @@ public class _CardGameManager : MonoBehaviour
         if (cardLeft == 0)
         {
             StartCoroutine(EndGameCoroutine());
-            info.SetActive(true);
-            AudioPlayer.Instance.PlayAudio(1);
         }
     }
     IEnumerator EndGameCoroutine(){
         yield return new WaitForSeconds(2.0f);
+        info.SetActive(true);
+        AudioPlayer.Instance.PlayAudio(1);
+
+        yield return new WaitForSeconds(3.0f);
         EndGame();  
         info.SetActive(false);      
     }
