@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class _CardGameManager : MonoBehaviour
@@ -34,6 +35,8 @@ public class _CardGameManager : MonoBehaviour
     // other UI
     [SerializeField]
     private Text sizeLabel;
+      [SerializeField]
+    private Text scoreText;
     [SerializeField]
     private Slider sizeSlider;
     [SerializeField]
@@ -42,6 +45,7 @@ public class _CardGameManager : MonoBehaviour
 
     private int spriteSelected;
     private int cardSelected;
+    private int score = 0;
     private int cardLeft;
     private bool gameStart;
 
@@ -233,6 +237,9 @@ public class _CardGameManager : MonoBehaviour
             if (spriteSelected == spriteId)
             {
                 //correctly matched
+                //AudioPlayer.Instance.PlayAudio(1);
+                score++;
+                scoreText.text = score.ToString();
                 cards[cardSelected].Inactive();
                 cards[cardId].Inactive();
                 cardLeft -= 2;
