@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class _CardGameManager : MonoBehaviour
 {
-
     public static _CardGameManager Instance;
     public static int gameSize = 2;
     // gameobject instance
@@ -261,6 +260,7 @@ public class _CardGameManager : MonoBehaviour
         if (cardLeft == 0)
         {
             StartCoroutine(EndGameCoroutine());
+            gameStart = false;
         }
     }
     IEnumerator EndGameCoroutine(){
