@@ -253,9 +253,15 @@ public class _CardGameManager : MonoBehaviour
         // win game
         if (cardLeft == 0)
         {
-            EndGame();
+            StartCoroutine(EndGameCoroutine());
+            info.SetActive(true);
             AudioPlayer.Instance.PlayAudio(1);
         }
+    }
+    IEnumerator EndGameCoroutine(){
+        yield return new WaitForSeconds(2.0f);
+        EndGame();  
+        info.SetActive(false);      
     }
     // stop game
     private void EndGame()
